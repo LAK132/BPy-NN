@@ -116,7 +116,7 @@ class NeuronNode(Node, NetworkNodeTree):
 
     def check_new(self):
         if len(self.inputs) > self.numInputsProperty:
-            self.inpputs.clear()
+            self.inputs.clear()
         while len(self.inputs) < self.numInputsProperty:
             num = len(self.inputs)
             self.inputs.new("SynapseSocket", "Value "+str(num))
@@ -128,7 +128,7 @@ class NeuronNode(Node, NetworkNodeTree):
         return runTot
 
     def update(self):
-        #self.check_new()
+        self.check_new()
         self.outputs["Output"].default_value.value = self.sum_inputs()
         print("update")
         self.update_chain("Output")
